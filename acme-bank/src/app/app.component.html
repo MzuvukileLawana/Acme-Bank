@@ -1,0 +1,52 @@
+<!-- LOADER -->
+<app-loader></app-loader>
+
+<div class="heading">
+  <h2>
+    {{ title }}
+  </h2>
+</div>
+
+<div class="container">
+  <h1>Account List</h1>
+  <table>
+    <thead style="font-size: 18px; background-color: #e4d7d7;">
+      <th>Account Number</th>
+      <th>Account Type</th>
+      <th>Balance</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of account_list">
+        <td>{{ row.account_number}}</td>
+        <td>{{ row.account_type}}</td>
+        <td>{{ row.display_balance }}</td>
+        <td *ngIf="row.account_type === 'cheque'">
+          <span *ngIf="row.balance > -500;else cannot_withdraw">
+            <button type="button" mat-button class="mr-3 can-withdraw-btn" (click)="withdraw(row.account_number, row.account_type, row.balance)">Withdraw</button>
+          </span>
+
+          <ng-template #cannot_withdraw>
+            <button type="button" [disabled]="true" mat-button class="mr-3 cannot-withdraw-btn" matTooltip="No funds available" matTooltipClass="tooltip-color" matTooltipPosition="right">Withdraw</button>
+          </ng-template>
+        </td>
+        <td *ngIf="row.account_type === 'savings'">
+          <span *ngIf="row.balance > 0;else cannot_withdraw">
+            <button type="button" mat-button class="mr-3 can-withdraw-btn" (click)="withdraw(row.account_number, row.account_type, row.balance)">Withdraw</button>
+          </span>
+
+          <ng-template #cannot_withdraw>
+            <button type="button" [disabled]="true"mat-button class="mr-3 cannot-withdraw-btn" matTooltip="No funds available" matTooltipClass="tooltip-color" matTooltipPosition="right">Withdraw</button>
+          </ng-template>
+        </td>
+      </tr>
+      <tr class="display-balance-row">
+        <td>Balance:</td>
+        <td></td>
+        <td>ZAR {{ total_balance | number : '1.2-2'}}</td>
+        <td></td>
+      </tr>
+  </tbody>
+  </table>
+</div>
+<notifier-container></notifier-container>
