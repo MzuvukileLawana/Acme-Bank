@@ -5,7 +5,7 @@ Welcome to ACME Bank front-end (Angular). This project displays a list of accoun
 
 ## To run the app
 
-######NB: you need to first run the back-end (mock-api-server) before thr front-end (acme-bank).
+###### NB: you need to first run the back-end (mock-api-server) before thr front-end (acme-bank).
 
 ### Steps to run the bank-end - mock-api-server
 
