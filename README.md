@@ -1,4 +1,4 @@
- #AcmeBank
+## AcmeBank
 
 Welcome to ACME Bank front-end (Angular). This project displays a list of accounts (Account Number, Account Type and Balance) and allow the user to withdraw money if there's sufficient funds available. This project was generated with [Angular CLI] version 8.0.6.
 
